@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:holamundo/pages/subir.dart';
+import 'package:holamundo/pages/perfil.dart';
 import 'package:holamundo/main.dart';
 
-class Perfil extends StatelessWidget {
+class Subir extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,19 +35,7 @@ class Perfil extends StatelessWidget {
       body: Center(
 
       child:MisDatos() ,
-     /* width: 150,
-      height: 250,
-      padding: const EdgeInsets.all(20),
-      
-      child: new Image.asset(
-        "img/doc0.jpg",
-          fit: BoxFit.cover,
-      ),
-      
-       */ 
-     // color: Color.fromARGB(200,200,200,1),
-        
-      
+     
       ),
        
     
@@ -65,29 +53,17 @@ class MisDatos extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Expanded(
-                 flex: 4,
-                 
-                 child: ClipOval(
-                   child: Image.asset(
-                     'img/doc0.jpg',
-                  width: 120,
-                  height: 150,
-                   ),
-                   
-                 ),
-                
-                 
-               ),
+               
               
                Expanded(
-                 flex: 5,
+                
                  child: Text(
-                   'Raziel Rivera ',style:
+                   'Sube tu archivo ',style:
                    TextStyle(
                      color: Colors.white,
-                     fontSize:30.0
-                   )
+                     fontSize:40.0
+                   ),
+                   textAlign: TextAlign.center,
                   
                  ),
                  
@@ -95,21 +71,6 @@ class MisDatos extends StatelessWidget {
                
             ],
             
-          ),
-          Column(
-            //crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-
-                 Text("Skills: ",style: TextStyle(color: Colors.white,fontSize: 20.0),textAlign: TextAlign.left,),  
-                 Text("                         -JavaWeb",style: TextStyle(color: Colors.white,),textAlign: TextAlign.right,
-                
-                 
-                 ),
-                 Text("                  -Php  ",style: TextStyle(color: Colors.white),textAlign: TextAlign.right,)
-                   
-                  ],   
-             
-               
           ),
           
          
@@ -122,9 +83,14 @@ class MisDatos extends StatelessWidget {
 
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+
+          ),
           Column(
             children: <Widget>[
-              Text('MIS ARCHIVOS',style: TextStyle(color: Colors.orange,fontSize: 29.0,fontFamily:'Arial' ,)),
+              //Podria tener un titulo
+              //Text('MIS ARCHIVOS',style: TextStyle(color: Colors.orange,fontSize: 29.0,fontFamily:'Arial' ,)),
              
              
               
@@ -142,7 +108,7 @@ class MisDatos extends StatelessWidget {
                ),
                
                color: Colors.red,
-               height: 180,
+               height: 295,
                width: 300,
                
                ),
@@ -152,11 +118,14 @@ class MisDatos extends StatelessWidget {
            flex:8,
 
            child:  Container(
-               child:ContDate(),
+              
             
                color: Colors.blue,
-               height: 180,
+               height: 295,
                width: 300,
+              
+               
+               
                
              ),
             
@@ -168,8 +137,8 @@ class MisDatos extends StatelessWidget {
                child:Text('hola', style: TextStyle(color: Colors.white),
                ) ,
                color: Colors.white,
-               height: 180,
-               width: 300,
+               height: 295,
+               width: 0,
                
              )
         )
@@ -209,27 +178,20 @@ class MisDatos extends StatelessWidget {
                   children: <Widget>[
                      const SizedBox(height: 30,), 
              RaisedButton(
-               onPressed: (){},
-               child: const Text(
-                 'Borrar',
-                 style: TextStyle(fontSize: 20,color: Colors.black),
-                 
-               ),
+               
+               onPressed: (){}/*_showDialog*/,
+               child:Icon(Icons.check_circle),
             
-               color: Colors.orange,
+               color: Colors.green,
              ),
              
-             const SizedBox(height: 30,
-             width: 30.0,
+             const SizedBox(height:30,
+             width: 50.0,
              ), 
              RaisedButton(
                onPressed: ()=>Navigator.of(context).push(new MaterialPageRoute(
-                 builder:(BuildContext context)=>Subir(), )),
-               child: const Text(
-                 'Subir',
-                 style: TextStyle(fontSize: 20,color: Colors.black),
-                 
-               ),
+                 builder:(BuildContext context)=>Perfil(), )),
+               child: Icon(Icons.system_update_alt),
                color: Colors.orange,
              )
                   ],
@@ -281,3 +243,22 @@ class ContDate extends StatelessWidget {
     );
   }
 }
+/* void _showDialog() {
+    // flutter defined function
+  
+        return  new AlertDialog(
+          title: new Text("Alert Dialog title"),
+          content: new Text("Alert Dialog body"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        
+      
+    );
+  }*/

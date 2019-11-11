@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter/src/widgets/text.dart';
 import 'package:holamundo/pages/mismensajes.dart';
 import 'package:holamundo/pages/perfil.dart';
 import 'package:holamundo/pages/guardados.dart';
@@ -74,9 +75,12 @@ class _MyApp extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
-      
       debugShowCheckedModeBanner: false,
+
+     
+      
+      
+      
       
       title: 'TecMM',
       
@@ -87,34 +91,67 @@ class _MyApp extends State<MyApp> {
       
 
       ),
-      home: Scaffold(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+        
         backgroundColor: Color.fromARGB(250, 30, 26, 26),
         appBar: AppBar(
+          
+           bottom: TabBar(
+            tabs: <Widget>[
+                Tab(icon: Icon(Icons.desktop_windows ,color: Color.fromARGB(245, 245, 145, 20),),),
+                Tab(icon: Icon(Icons.mobile_screen_share,color: Color.fromARGB(245, 245, 145, 20),),),
+                Tab(icon: Icon(Icons.web,color: Color.fromARGB(245, 245, 145, 20),),),
+                //Text('WEB',style: TextStyle(color: Color.fromARGB(245, 245, 145, 20),fontSize: 45.0)
+
+            ],
+          ),
+          
           title: Row(
             mainAxisAlignment: MainAxisAlignment .end,
             children: <Widget>[
               Image.asset(
                 'img/logo.jpg',
                 fit: BoxFit.cover,
-                height: 38,
+                height: 45,
               ),
             
             ],
           ),
+          
+          
+     /*  leading: IconButton(icon: Icon(Icons.menu,size:46.0),
+          onPressed: ()=>Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context)=>MenuLateral(),
+                )),
+          )*/
          leading: new Icon(Icons.menu,color: Colors.orange,size: 50.0,),
-         // iconTheme: new  IconThemeData(color: Colors.orange,size: 48.5,),
+         iconTheme: new  IconThemeData(color: Colors.orange,size: 48.5,),
         
 
        ),
-        drawer: MenuLateral(),
-        body: new GridView.count(
-           crossAxisCount: 1, //numero de columas de la primera pagina pruebn con 1
-            mainAxisSpacing: 1.9, //espacio entre card
-            childAspectRatio:.610, //espacio largo de cada card 
+       drawer: MenuLateral(),
+       body: TabBarView(
+         children: <Widget>[
+           GridView.count(
+            crossAxisCount: 1, //numero de columas de la primera pagina pruebn con 1
+            mainAxisSpacing: 1.91, //espacio entre card
+            childAspectRatio:0.600, //espacio largo de cada card 
             children: listamos,
+           ),
+           Icon(Icons.directions_transit,color: Color.fromARGB(245, 245, 145, 20),),
+              Icon(Icons.directions_bike),
+            
+         ],
+       )
+        
+      //  body: new GridView.count(
+          
          
               
-        ),
+       // ),
+        )
       )
     );
   }
@@ -128,6 +165,7 @@ class MenuLateral extends StatelessWidget{
             children: <Widget>[
                
               new UserAccountsDrawerHeader(
+                
                 //aqui iran los datos desde firebase
                 accountName: Text('Nombre de usuario'
                 ,style: TextStyle(
@@ -135,8 +173,8 @@ class MenuLateral extends StatelessWidget{
                 ),),
                 accountEmail:Text("funcion@gmail.com"),
                 decoration:BoxDecoration(
-                
-                  image: DecorationImage(
+               
+                  image: new DecorationImage(
                     //con esta sentencia me traigo el dato
                     image: AssetImage('img/doc0.jpg'),
                   fit: BoxFit.cover
@@ -144,10 +182,13 @@ class MenuLateral extends StatelessWidget{
                   ),
               ),
               Ink(
+
                 //color: Color.fromARGB(250, 250,250, 250),
                 child: new ListTile(
+              
                 leading: Icon(Icons.account_circle,size: 45.0),
                 title: Text('PERFIL',
+                
                 textAlign: TextAlign.center,
                 
                 style: TextStyle(
@@ -155,13 +196,26 @@ class MenuLateral extends StatelessWidget{
                   //color: Colors.white,
                   fontFamily: 'Calibri',
                   letterSpacing: 1.2
-                ),),
+                ),
+                ),
+
                 
-                onTap: ()=> Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>Perfil(),
+                onTap: ()=> Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context)=>Perfil(),
                 )),
                  
               ),
+              decoration: const BoxDecoration(
+                border: Border(
+                 top: BorderSide(width: 5.0, color: Colors.black),
+      left: BorderSide(width: 25.0, color: Colors.black),
+      right: BorderSide(width: 25.0, color: Colors.black),
+      bottom: BorderSide(width: 25.0, color: Colors.black),
+                ),
+                
               ),
+              ),
+              
               Ink(
                 //color: Colors.orange,
                 child: new ListTile(
@@ -173,7 +227,8 @@ class MenuLateral extends StatelessWidget{
                     fontFamily: 'RobotoMono',
                   
                     
-                  ),),
+                  ),
+                  ),
                   onTap: ()=> Navigator.of(context).push(new MaterialPageRoute(
                     builder: (BuildContext context)=> Guardados(),
                   )),
@@ -247,7 +302,7 @@ class Detalle extends StatelessWidget {
                 child: new Material(
                   child: new InkWell(
                     child: new Image.asset(
-                      "img/$imagen",
+                      "img/$imagen",width: 387,height: 450,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -386,5 +441,25 @@ class Informacion extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+class Drawhorizontalline extends CustomPainter {
+  Paint _paint;
+
+  Drawhorizontalline() {
+    _paint = Paint()
+      ..color = Colors.orange
+      ..strokeWidth = 7
+      ..strokeCap = StrokeCap.round;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+      canvas.drawLine(Offset(-250.0, 0.0), Offset(359.0, 0.0), _paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
