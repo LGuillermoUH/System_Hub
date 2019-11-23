@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:holamundo/pages/perfil.dart';
-import 'package:holamundo/main.dart';
+
 
 class Subir extends StatelessWidget {
   @override
@@ -22,7 +22,7 @@ class Subir extends StatelessWidget {
         ),
         leading:  IconButton(icon: Icon(Icons.arrow_back,size:46.0),
         onPressed: ()=>Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context)=>MyApp(),
+                  builder: (BuildContext context)=>Perfil(),
                 )),
                 /* title: Text('AppBar Back Button'),
         leading: IconButton(icon:Icon(Icons.arrow_back),

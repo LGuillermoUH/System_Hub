@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:holamundo/pages/info.dart';
 import 'package:holamundo/pages/subir.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:holamundo/main.dart';
 
 class Perfil extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:Color.fromARGB(250,30,26,26),
       appBar: new AppBar(
-        
-       
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -100,7 +101,7 @@ class MisDatos extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
 
-                 Text("Skills: ",style: TextStyle(color: Colors.white,fontSize: 20.0),textAlign: TextAlign.left,),  
+                 Text("Skills: ",style: TextStyle(color: Color.fromARGB(250, 250, 145, 20),fontSize: 25.0),textAlign: TextAlign.left,),  
                  Text("                         -JavaWeb",style: TextStyle(color: Colors.white,),textAlign: TextAlign.right,
                 
                  
@@ -110,6 +111,10 @@ class MisDatos extends StatelessWidget {
                   ],   
              
                
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+
           ),
           
          
@@ -135,49 +140,49 @@ class MisDatos extends StatelessWidget {
           Row(
             children: <Widget>[
               
-       Expanded(
+       /*Expanded(
          flex: 1,
                child: Container(
-               child:Text('hola', style: TextStyle(color: Colors.white),
-               ),
+               //child:Text('hola', style: TextStyle(color: Colors.white),
+               //),
                
-               color: Colors.red,
+               //color: Colors.red,
                height: 180,
                width: 300,
                
                ),
               
-             ),
+             ),*/
         Expanded(
-           flex:8,
+           //flex:8,
 
            child:  Container(
                child:ContDate(),
             
-               color: Colors.blue,
+               //color: Colors.blue,
                height: 180,
-               width: 300,
+               width: 250,
                
              ),
             
         ),
-        Expanded(
+        /*Expanded(
           flex:1,
 
            child:  Container(
-               child:Text('hola', style: TextStyle(color: Colors.white),
-               ) ,
-               color: Colors.white,
+               //child:Text('hola', style: TextStyle(color: Colors.white),
+               //) ,
+               //color: Colors.white,
                height: 180,
                width: 300,
                
              )
-        )
+        )*/
               
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(15.0),
 
           ),
           Expanded(
@@ -273,11 +278,85 @@ class Drawhorizontalline extends CustomPainter {
 class ContDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return SafeArea(
+      child: Column(
       children: <Widget>[
-        
-
+        _list()
       ],
+      ) 
+
     );
+
+     
   }
 }
+Widget _list(){
+    return Expanded(
+      child: ListView.separated(
+        itemCount: 5,
+        itemBuilder: (BuildContext contex, int index) => _item(Image.asset('img/doc0.jpg')/*FontAwesomeIcons.appStore*/, "MyApp", 1, "View"),
+        separatorBuilder: (BuildContext context, int index)  {
+          return Container(
+            color: Colors.blueAccent.withOpacity(0.15),
+            height: 8.0,
+          );
+        },
+      ),
+    );
+
+
+  }
+ Widget _item(Image im/*IconData icon*/, String nombre, int porcentaje , String value) {
+    return ListTile(
+      leading:Image.asset('img/doc0.jpg',) //Icon(icon,color: Color.fromARGB(245, 245, 146, 20),),
+      ,title: Text(nombre,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(245, 245, 146, 20),
+          fontSize: 20.0,
+        ),
+      ),
+
+      subtitle: Text("$porcentaje of proyectos",
+        style: TextStyle(
+          fontSize: 16.0,
+          color:  Colors.blueGrey,
+        ),
+      ),
+
+      trailing: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueAccent.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          
+          child: RaisedButton(
+            child:Text("View",
+            style: TextStyle(
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            
+            ),
+          
+          ),
+           onPressed: ()=>Info()
+           
+          )
+          /*Text("View",
+            style: TextStyle(
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            
+            ),
+          
+          ),
+          */
+        ),
+        
+      ),
+    );
+  }

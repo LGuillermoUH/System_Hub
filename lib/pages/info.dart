@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:holamundo/pages/perfil.dart';
+
 import 'package:holamundo/main.dart';
 
 class Info extends StatelessWidget {

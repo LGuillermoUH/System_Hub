@@ -140,8 +140,20 @@ class _MyApp extends State<MyApp> {
             childAspectRatio:0.600, //espacio largo de cada card 
             children: listamos,
            ),
-           Icon(Icons.directions_transit,color: Color.fromARGB(245, 245, 145, 20),),
-              Icon(Icons.directions_bike),
+           GridView.count(
+            crossAxisCount: 1, //numero de columas de la primera pagina pruebn con 1
+            mainAxisSpacing: 1.91, //espacio entre card
+            childAspectRatio:0.600, //espacio largo de cada card 
+            children: listamos,
+           ),
+           GridView.count(
+            crossAxisCount: 1, //numero de columas de la primera pagina pruebn con 1
+            mainAxisSpacing: 1.91, //espacio entre card
+            childAspectRatio:0.600, //espacio largo de cada card 
+            children: listamos,
+           ),
+           //Icon(Icons.directions_transit,color: Color.fromARGB(245, 245, 145, 20),),
+             // Icon(Icons.directions_bike),
             
          ],
        )
@@ -296,7 +308,10 @@ class Detalle extends StatelessWidget {
         body: new ListView(
           children: <Widget>[
             new Container(
-              height: 387.0,//tamaño de la segunda imagen
+              width: 220,
+
+              color: Colors.black,              
+              height: 530.0,//tamaño de la segunda imagen
               child: new Hero(
                 tag: nombre,
                 child: new Material(
@@ -329,6 +344,7 @@ class IniciarNombre extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black,
       padding: new EdgeInsets.all(10.0),
       child: new Row(
         children: <Widget>[
@@ -338,34 +354,35 @@ class IniciarNombre extends StatelessWidget {
               children: <Widget>[
                 new Text(
                   nombre,
-                  style: new TextStyle(fontSize: 20.0, color: Colors.blue),
+                  style: new TextStyle(fontSize: 25.0, color:  Color.fromARGB(250, 250,150,20)),
                 ),
-                new Text(
+                /*new Text(
                   "$nombre\@gmail.com",
-                  style: new TextStyle(fontSize: 15.0, color: Colors.blueGrey),
-                ),
+                  style: new TextStyle(fontSize: 15.0, color: Color.fromARGB(250, 250, 145, 20)),
+                ),*/
               ],
             ),
           ),
               new Row(
+              
               children: <Widget>[
               new Icon(//icono que agrega estrellas calificacion
                 Icons.star,
                 size: 30.0,
-                color: Colors.red,
+                color: Color.fromARGB(250, 250, 145, 20),
               ),
               new Icon(
                 Icons.star,
                 size: 30.0,
-                color: Colors.orange,
+                color: Color.fromARGB(250, 250, 145, 20),
               ),
               new Icon(
                 Icons.star,
                 size: 30.0,
-                color: Colors.purple,
+                color:  Color.fromARGB(250, 250, 145, 20),
               ),
               new Text(
-                "12",
+               'Point',
                 style: new TextStyle(fontSize: 18.0),
               )
             ],
@@ -379,16 +396,13 @@ class IniciarIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black,
       padding: new EdgeInsets.all(10.0),
       child: new Row(
         children: <Widget>[
-          new IconTec(
-            icon: Icons.call,
-            tec: "Llamar"
-                ), 
                 new IconTec(
             icon: Icons.message,
-            tec: "WhastApp"
+            tec: "Correo"
                 ),
                 new IconTec(
             icon: Icons.photo,
@@ -411,11 +425,12 @@ class IconTec extends StatelessWidget {
           new Icon(
             icon,
             size: 50.0,
-            color: Colors.blue,
+            color:  Color.fromARGB(250, 250, 145, 20)
+            ,
           ),
           new Text(
             tec,
-            style: new TextStyle(fontSize: 12.0, color: Colors.blue),
+            style: new TextStyle(fontSize: 12.0, color:  Color.fromARGB(250, 250, 145, 20)),
           )
         ],
       ),
@@ -436,10 +451,11 @@ class Informacion extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: new Text(
             deporte,
-            style: new TextStyle(fontSize: 16.0, color: Colors.blue),
+            style: new TextStyle(fontSize: 16.0, color:  Color.fromARGB(250, 250, 145, 20),
           ),
         ),
       ),
+      )
     );
   }
 }
