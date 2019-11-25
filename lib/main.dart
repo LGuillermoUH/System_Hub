@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:holamundo/pages/graficas.dart';
+import 'package:holamundo/pages/graficas1.dart';
 //import 'package:flutter/src/widgets/text.dart';
 import 'package:holamundo/pages/mismensajes.dart';
 import 'package:holamundo/pages/perfil.dart';
@@ -264,6 +266,20 @@ class MenuLateral extends StatelessWidget{
                     
                 
                 ),
+
+              ),
+              Ink(
+              color: Colors.orange,
+              child: new ListTile(
+                leading: Icon(Icons.graphic_eq,size: 45,) ,
+                title: Text("GRAFICAS",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 17.85
+                )),
+                onTap: ()=>Navigator.of(context).push(new MaterialPageRoute(
+                  builder:(BuildContext context)=> Elfinal() ))
+              ),
 
               ),
              Ink(
